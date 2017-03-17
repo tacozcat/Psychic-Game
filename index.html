@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <title>Rock Paper Scissors Part 2</title>
+  </head>
+  <body>
+   <div id="game">
+   <h1> Psychic Game</h1>
+    <p> Press any letter</p>
+      <p> Guess the same letter as the computer to win. </p>
+      <p>Win: </p>
+      <p>Losses: </p>
+      <p>Guesses Left: </p>
+      <p>Letters Guessed: </p>
+    </div>
+
+    <script type="text/javascript">
+
+      // Creates an array that lists out all of the options (a-z).
+      // 
+
+      var win = 0;
+      var loss = 0;
+      var counter = 9;
+      var letters= ();
+
+      var alpha = "abcdefghijklmnopqrstuvwxyz";
+      var alphaSplits = alpha.split("");
+
+      // When the user presses a key, it will run the following function...
+      document.onkeypress = function() {
+        var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+          
+          // console.log(userGuess);
+
+      var computerGuess = alphaSplits[Math.floor(Math.random() * alphaSplits.length)];
+        // console.log(computerGuess);
+
+        if ((userGuess === computerGuess)){
+          wins++;
+          // alert("you win" + win);
+         }
+
+        if ((userGuess !== computerGuess)) {
+          counter--;
+          letters.push(userGuess);
+          
+         } // alert("you suck" + counter);
+
+        if (counter === 0 ){
+          loss++;
+        }
+
+
+
+        
+        
+
+
+      
+
+      var html = "<h1> Psychic Game</h1>" +
+                "<p>Press any letter</p>" + 
+                "<p> Guess the same letter as the computer to win. </p>" + 
+                "<p>Win: " + win + "</p>" + 
+                "<p>Losses: " + loss + "</p>" +
+                "<p>Guesses Left: " + counter + "</p>"
+                "<p>Letters Guessed: " + letters + "</p>";
+
+      document.querySelector('#game').innerHTML = html;
+
+      } //end of function
+
+        // Determine which key was pressed
+      // var userGuess = event.key;{
+      //   alert(userGuess);
+      // }
+        
+
+        // Sets the computerGuess variable equal to a random choice from the computerChoice array.
+      //  {
+      //   console.log(alpha);
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </script>
+
+  </body>
+</html>
