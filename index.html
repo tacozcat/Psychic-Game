@@ -3,18 +3,19 @@
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <title>Rock Paper Scissors Part 2</title>
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
+    <title>Psychic Game</title>
   </head>
   <body>
-   <div id="game">
+    <div id="game">
    <h1> Psychic Game</h1>
     <p> Press any letter</p>
       <p> Guess the same letter as the computer to win. </p>
-      <p>Win: </p>
-      <p>Losses: </p>
-      <p>Guesses Left: </p>
-      <p>Letters Guessed: </p>
-    </div>
+      <p id="lettersWon">Win: </p>
+      <p id="lettersLost">Losses: </p>
+      <p id="guesses">Guesses Left: </p>
+      <p id="lettersGuessed"> Letters Guessed: </p>
+    </div> 
 
     <script type="text/javascript">
 
@@ -24,36 +25,64 @@
       var win = 0;
       var loss = 0;
       var counter = 9;
-      var letters= ();
+      var letters= [];
+
 
       var alpha = "abcdefghijklmnopqrstuvwxyz";
       var alphaSplits = alpha.split("");
+      var lettersGuessedVar;
+
+
+
 
       // When the user presses a key, it will run the following function...
       document.onkeypress = function() {
         var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-          
-          // console.log(userGuess);
+       letters.push(userGuess);
+       // console.log(letters);
+
+
+       lettersGuessedVar = document.getElementById("lettersGuessed");
+       lettersGuessedVar.innerHTML ="Letters Guessed: " + letters;
+       
+        winVar = document.getElementById("lettersWon");
+        winVar.innerHTML = "Win: " + win;
+
+        lossVar = document.getElementById("lettersLost");
+        lossVar.innerHTML = "Losses: " + loss;
+
+        counterVar = document.getElementById("guesses");
+        counterVar.innerHTML = "Guesses left: " + counter;
+        
 
       var computerGuess = alphaSplits[Math.floor(Math.random() * alphaSplits.length)];
-        // console.log(computerGuess);
+         // console.log("user: " + userGuess);
+         // console.log("computer: " + computerGuess);
 
         if ((userGuess === computerGuess)){
-          wins++;
+          win++;
+          counter = 9;
+          letters = [];
+
           // alert("you win" + win);
          }
 
         if ((userGuess !== computerGuess)) {
           counter--;
-          letters.push(userGuess);
+          // letters.push(userGuess);
           
          } // alert("you suck" + counter);
 
         if (counter === 0 ){
           loss++;
+          counter = 9;
+          letters = [];
+
         }
 
 
+
+ 
 
         
         
@@ -61,15 +90,15 @@
 
       
 
-      var html = "<h1> Psychic Game</h1>" +
-                "<p>Press any letter</p>" + 
-                "<p> Guess the same letter as the computer to win. </p>" + 
-                "<p>Win: " + win + "</p>" + 
-                "<p>Losses: " + loss + "</p>" +
-                "<p>Guesses Left: " + counter + "</p>"
-                "<p>Letters Guessed: " + letters + "</p>";
+      // var html = "<h1> Psychic Game</h1>" +
+      //           "<p>Press any letter</p>" + 
+      //           "<p> Guess the same letter as the computer to win. </p>" + 
+      //           "<p>Win: " + win + "</p>" + 
+      //           "<p>Losses: " + loss + "</p>" +
+      //           "<p>Guesses Left: " + counter + "</p>"
+      //           "<p>Letters Guessed: " + letters + "</p>";
 
-      document.querySelector('#game').innerHTML = html;
+      // document.querySelector('#game').innerHTML = html;
 
       } //end of function
 

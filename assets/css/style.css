@@ -1,7 +1,10 @@
 body{
 	background: black;
-	color: white;
+	background-image: url("http://cdn.wallpapersafari.com/12/93/LuE8QB.jpg");
+	color: #d9d9d9;
 	text-align: center;
+	font-family: 'Bungee Shade', cursive;
+	margin-top: 10%;
 
 }
 
