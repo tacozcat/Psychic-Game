@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
+    <title>Psychic Game</title>
+  </head>
+  <body>
+    <div id="game">
+   <h1> Psychic Game</h1>
+    <p> Press any letter</p>
+      <p> Guess the same letter as the computer to win. </p>
+      <p id="lettersWon">Win: </p>
+      <p id="lettersLost">Losses: </p>
+      <p id="guesses">Guesses Left: </p>
+      <p id="lettersGuessed"> Letters Guessed: </p>
+    </div> 
+
+    <script type="text/javascript">
+
+      // Creates an array that lists out all of the options (a-z).
+      // 
+
+      var win = 0;
+      var loss = 0;
+      var counter = 9;
+      var letters= [];
+
+
+      var alpha = "abcdefghijklmnopqrstuvwxyz";
+      var alphaSplits = alpha.split("");
+      var lettersGuessedVar;
+
+
+
+
+      // When the user presses a key, it will run the following function...
+      document.onkeypress = function() {
+        var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+       letters.push(userGuess);
+       // console.log(letters);
+
+
+       lettersGuessedVar = document.getElementById("lettersGuessed");
+       lettersGuessedVar.innerHTML ="Letters Guessed: " + letters;
+       
+        winVar = document.getElementById("lettersWon");
+        winVar.innerHTML = "Win: " + win;
+
+        lossVar = document.getElementById("lettersLost");
+        lossVar.innerHTML = "Losses: " + loss;
+
+        counterVar = document.getElementById("guesses");
+        counterVar.innerHTML = "Guesses left: " + counter;
+        
+
+      var computerGuess = alphaSplits[Math.floor(Math.random() * alphaSplits.length)];
+         // console.log("user: " + userGuess);
+         // console.log("computer: " + computerGuess);
+
+        if ((userGuess === computerGuess)){
+          win++;
+          counter = 9;
+          letters = [];
+
+          // alert("you win" + win);
+         }
+
+        if ((userGuess !== computerGuess)) {
+          counter--;
+          // letters.push(userGuess);
+          
+         } // alert("you suck" + counter);
+
+        if (counter === 0 ){
+          loss++;
+          counter = 9;
+          letters = [];
+
+        }
+
+
+
+ 
+
+        
+        
+
+
+      
+
+      // var html = "<h1> Psychic Game</h1>" +
+      //           "<p>Press any letter</p>" + 
+      //           "<p> Guess the same letter as the computer to win. </p>" + 
+      //           "<p>Win: " + win + "</p>" + 
+      //           "<p>Losses: " + loss + "</p>" +
+      //           "<p>Guesses Left: " + counter + "</p>"
+      //           "<p>Letters Guessed: " + letters + "</p>";
+
+      // document.querySelector('#game').innerHTML = html;
+
+      } //end of function
+
+        // Determine which key was pressed
+      // var userGuess = event.key;{
+      //   alert(userGuess);
+      // }
+        
+
+        // Sets the computerGuess variable equal to a random choice from the computerChoice array.
+      //  {
+      //   console.log(alpha);
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </script>
+
+  </body>
+</html>
